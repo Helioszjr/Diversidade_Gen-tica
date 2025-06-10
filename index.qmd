@@ -4,7 +4,7 @@ title: |
   ![](img/ppg.png){width=60%} 
   
   Avaliação da diversidade genética em 15 acessos por meio de marcadores moleculares do tipo SSR (microssatélites) e RAPD
-author: "Adriana Gonela, Helio de souza Junior e Pedro Duhatschek"
+author: "Adriana Gonela, Helio de souza Junior e Pedro Henrique Silvestre Duhatschek"
 date: "06-12-2025"
 lang: pt
 toc: true
