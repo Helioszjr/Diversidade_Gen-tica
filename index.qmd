@@ -3,9 +3,9 @@
 title: |
   ![](img/ppg.png){width=60%} 
   
-  Avaliação da diversidade genética em 15 genótipos por meio de marcadores moleculares do tipo SSR (microssatélites) e RAPD
+  Avaliação da diversidade genética em 15 acessos por meio de marcadores moleculares do tipo SSR (microssatélites) e RAPD
 author: "Adriana Gonela, Helio Junior e Pedro Duhatschek"
-date: "06-06-2025"
+date: "06-09-2025"
 lang: pt
 toc: true
 code-annotations: "hover"
@@ -52,6 +52,10 @@ RAPD <- read_excel("C:/Git/EstDocenciaUEM/AULA - PRATICA/RAPD.xlsx", sheet = "RA
 ```
 
 ```{r}
+head(RAPD)
+```
+
+```{r}
 dados1 <- RAPD |> rename(individuo = 1)
 ```
 
@@ -74,12 +78,26 @@ dist_jaccard <- vegdist(matriz_binaria, method = "jaccard")
 cluster <- hclust(dist_jaccard, method = "average")
 ```
 
-### 5. Dendrograma com rótulos dos indivíduos
+### 5. Dendrograma (agrupamento hierárquico)
 
 ```{r}
-# Dendrograma (agrupamento hierárquico)
-plot(cluster, labels = nomes, main = "Dendrograma (Jaccard + UPGMA)", xlab = "", sub = "")
+# Mostra similaridade entre indivíduos.
+dist_mat <- dist(matriz_binaria)
+hc1 <- hclust(dist_mat, method = "ward.D2")
+plot(hc1, main = "Dendrograma de similaridade RAPD", xlab = "", sub = "")
 
+```
+
+```{r}
+fviz_dend(hc1,
+          cex = 0.8,               # Tamanho da fonte
+          k = 4,                   # Número de grupos (opcional)
+          k_colors = c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3"),  # Cores para os grupos
+          label_cols = "black",
+          rect = TRUE,             # Mostrar retângulos nos grupos
+          rect_fill = TRUE,
+          rect_border = "jco",     # Cor das bordas
+          main = "Dendrograma de similaridade RAPD")
 ```
 
 ### 5.1. Dendrograma com rótulos dos indivíduos coloridos
@@ -96,16 +114,6 @@ fviz_dend(cluster,
           cex = 0.8)
 ```
 
-### 5.1. Dendrograma (agrupamento hierárquico)
-
-```{r}
-# Mostra similaridade entre indivíduos.
-dist_mat <- dist(matriz_binaria)
-hc <- hclust(dist_mat, method = "ward.D2")
-plot(hc, main = "Dendrograma de similaridade RAPD", xlab = "", sub = "")
-
-```
-
 ### 6. Análise de Componentes Principais (PCA)
 
 ```{r}
@@ -117,7 +125,7 @@ fviz_pca_ind(pca,
              label = "none", # ou "all" para mostrar nomes
              habillage = cutree(cluster, k = 3), # colorir por grupo do dendrograma
              addEllipses = TRUE,
-             title = "PCA - Dados RAPD")
+             title = "PCA - RAPD")
 
 ```
 
@@ -140,7 +148,7 @@ km <- kmeans(matriz_binaria, centers = 3, nstart = 25)
 # Visualizar os clusters na PCA
 fviz_cluster(km, data = matriz_binaria,
              labelsize = 10,
-             main = "K-means clustering sobre dados RAPD")
+             main = "K-means sobre dados RAPD")
 
 ```
 
@@ -149,11 +157,6 @@ fviz_cluster(km, data = matriz_binaria,
 ```{r}
 ggsave("pca_rapd.png", width = 6, height = 5, dpi = 300)
 ```
-
-
-
-
-
 
 
 
@@ -186,24 +189,18 @@ dist_matrix <- dist(dados_genind, method = "euclidean")
 ### 5. Dendrograma com rótulos dos indivíduos
 
 ```{r}
-hc <- hclust(dist_matrix, method = "ward.D2")
-plot(hc, main="Dendrograma de similaridade SSR", xlab="", sub="", cex=0.8)
+hc2 <- hclust(dist_matrix, method = "ward.D2")
+plot(hc2, main="Dendrograma de similaridade SSR", xlab="", sub="", cex=0.8)
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```{r}
+fviz_dend(hc2,
+          cex = 0.8,               # Tamanho da fonte
+          k = 4,                   # Número de grupos (opcional)
+          k_colors = c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3"),  # Cores para os grupos
+          label_cols = "black",
+          rect = TRUE,             # Mostrar retângulos nos grupos
+          rect_fill = TRUE,
+          rect_border = "jco",     # Cor das bordas
+          main = "Dendrograma de similaridade SSR")
+```

@@ -8,7 +8,7 @@
 
 <meta name="author" content="Adriana Gonela, Helio Junior e Pedro Duhatschek">
 
-<title>quarto-input6cccfafab43cbf05</title>
+<title>quarto-input1bcaa33ea0ee614e</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,9 +87,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#separar-identificadores-e-matriz-binária" id="toc-separar-identificadores-e-matriz-binária" class="nav-link" data-scroll-target="#separar-identificadores-e-matriz-binária">2. Separar identificadores e matriz binária</a></li>
   <li><a href="#calcular-matriz-de-distância-jaccard" id="toc-calcular-matriz-de-distância-jaccard" class="nav-link" data-scroll-target="#calcular-matriz-de-distância-jaccard">3. Calcular matriz de distância (Jaccard)</a></li>
   <li><a href="#agrupamento-hierárquico-método-upgma" id="toc-agrupamento-hierárquico-método-upgma" class="nav-link" data-scroll-target="#agrupamento-hierárquico-método-upgma">4. Agrupamento hierárquico (método UPGMA)</a></li>
-  <li><a href="#dendrograma-com-rótulos-dos-indivíduos" id="toc-dendrograma-com-rótulos-dos-indivíduos" class="nav-link" data-scroll-target="#dendrograma-com-rótulos-dos-indivíduos">5. Dendrograma com rótulos dos indivíduos</a></li>
+  <li><a href="#dendrograma-agrupamento-hierárquico" id="toc-dendrograma-agrupamento-hierárquico" class="nav-link" data-scroll-target="#dendrograma-agrupamento-hierárquico">5. Dendrograma (agrupamento hierárquico)</a></li>
   <li><a href="#dendrograma-com-rótulos-dos-indivíduos-coloridos" id="toc-dendrograma-com-rótulos-dos-indivíduos-coloridos" class="nav-link" data-scroll-target="#dendrograma-com-rótulos-dos-indivíduos-coloridos">5.1. Dendrograma com rótulos dos indivíduos coloridos</a></li>
-  <li><a href="#dendrograma-agrupamento-hierárquico" id="toc-dendrograma-agrupamento-hierárquico" class="nav-link" data-scroll-target="#dendrograma-agrupamento-hierárquico">5.1. Dendrograma (agrupamento hierárquico)</a></li>
   <li><a href="#análise-de-componentes-principais-pca" id="toc-análise-de-componentes-principais-pca" class="nav-link" data-scroll-target="#análise-de-componentes-principais-pca">6. Análise de Componentes Principais (PCA)</a></li>
   <li><a href="#pca-análise-de-componentes-principais" id="toc-pca-análise-de-componentes-principais" class="nav-link" data-scroll-target="#pca-análise-de-componentes-principais">6.1. PCA (Análise de Componentes Principais)</a></li>
   <li><a href="#agrupamento-com-k-means-alternativa-ao-dendrograma" id="toc-agrupamento-com-k-means-alternativa-ao-dendrograma" class="nav-link" data-scroll-target="#agrupamento-com-k-means-alternativa-ao-dendrograma">7. Agrupamento com k-means (alternativa ao dendrograma)</a></li>
@@ -99,7 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#visualização-dos-dados-ssr" id="toc-visualização-dos-dados-ssr" class="nav-link" data-scroll-target="#visualização-dos-dados-ssr">2. Visualização dos dados SSR</a></li>
   <li><a href="#calcular-matriz-de-distância-nei" id="toc-calcular-matriz-de-distância-nei" class="nav-link" data-scroll-target="#calcular-matriz-de-distância-nei">4. Calcular matriz de distância (Nei)</a></li>
-  <li><a href="#dendrograma-com-rótulos-dos-indivíduos-1" id="toc-dendrograma-com-rótulos-dos-indivíduos-1" class="nav-link" data-scroll-target="#dendrograma-com-rótulos-dos-indivíduos-1">5. Dendrograma com rótulos dos indivíduos</a></li>
+  <li><a href="#dendrograma-com-rótulos-dos-indivíduos" id="toc-dendrograma-com-rótulos-dos-indivíduos" class="nav-link" data-scroll-target="#dendrograma-com-rótulos-dos-indivíduos">5. Dendrograma com rótulos dos indivíduos</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -109,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title"><p><img src="img/ppg.png" class="img-fluid" style="width:60.0%"></p>
-<p>Avaliação da diversidade genética em 15 genótipos por meio de marcadores moleculares do tipo SSR (microssatélites) e RAPD</p></h1>
+<p>Avaliação da diversidade genética em 15 acessos por meio de marcadores moleculares do tipo SSR (microssatélites) e RAPD</p></h1>
 </div>
 
 
@@ -126,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">6 de junho de 2025</p>
+      <p class="date">9 de junho de 2025</p>
     </div>
   </div>
   
@@ -167,58 +166,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>RAPD <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:/Git/EstDocenciaUEM/AULA - PRATICA/RAPD.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"RAPD"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dados1 <span class="ot">&lt;-</span> RAPD <span class="sc">|&gt;</span> <span class="fu">rename</span>(<span class="at">individuo =</span> <span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(RAPD)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 61
+  ...1  `500 pb...2` `600 pb...3` `700 pb...4` `800 pb...5` `900 pb...6`
+  &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
+1 UEM-1            0            1            1            0            0
+2 UEM-2            0            1            0            1            0
+3 UEM-3            1            0            1            1            1
+4 UEM-4            1            0            1            0            0
+5 UEM-5            0            0            1            0            0
+6 UEM-6            0            1            0            0            0
+# ℹ 55 more variables: `1000 pb...7` &lt;dbl&gt;, `1100 pb...8` &lt;dbl&gt;,
+#   `1200 pb...9` &lt;dbl&gt;, `1300 pb...10` &lt;dbl&gt;, `1400 pb...11` &lt;dbl&gt;,
+#   `500 pb...12` &lt;dbl&gt;, `600 pb...13` &lt;dbl&gt;, `700 pb...14` &lt;dbl&gt;,
+#   `800 pb...15` &lt;dbl&gt;, `900 pb...16` &lt;dbl&gt;, `1000 pb...17` &lt;dbl&gt;,
+#   `1100 pb...18` &lt;dbl&gt;, `1200 pb...19` &lt;dbl&gt;, `1300 pb...20` &lt;dbl&gt;,
+#   `1400 pb...21` &lt;dbl&gt;, `500 pb...22` &lt;dbl&gt;, `600 pb...23` &lt;dbl&gt;,
+#   `700 pb...24` &lt;dbl&gt;, `800 pb...25` &lt;dbl&gt;, `900 pb...26` &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dados1 <span class="ot">&lt;-</span> RAPD <span class="sc">|&gt;</span> <span class="fu">rename</span>(<span class="at">individuo =</span> <span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="separar-identificadores-e-matriz-binária" class="level3">
 <h3 class="anchored" data-anchor-id="separar-identificadores-e-matriz-binária">2. Separar identificadores e matriz binária</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>matriz_binaria <span class="ot">&lt;-</span> dados1 <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>individuo)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>nomes <span class="ot">&lt;-</span> dados1<span class="sc">$</span>individuo</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>matriz_binaria <span class="ot">&lt;-</span> dados1 <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>individuo)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>nomes <span class="ot">&lt;-</span> dados1<span class="sc">$</span>individuo</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="calcular-matriz-de-distância-jaccard" class="level3">
 <h3 class="anchored" data-anchor-id="calcular-matriz-de-distância-jaccard">3. Calcular matriz de distância (Jaccard)</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dist_jaccard <span class="ot">&lt;-</span> <span class="fu">vegdist</span>(matriz_binaria, <span class="at">method =</span> <span class="st">"jaccard"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dist_jaccard <span class="ot">&lt;-</span> <span class="fu">vegdist</span>(matriz_binaria, <span class="at">method =</span> <span class="st">"jaccard"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="agrupamento-hierárquico-método-upgma" class="level3">
 <h3 class="anchored" data-anchor-id="agrupamento-hierárquico-método-upgma">4. Agrupamento hierárquico (método UPGMA)</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>cluster <span class="ot">&lt;-</span> <span class="fu">hclust</span>(dist_jaccard, <span class="at">method =</span> <span class="st">"average"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cluster <span class="ot">&lt;-</span> <span class="fu">hclust</span>(dist_jaccard, <span class="at">method =</span> <span class="st">"average"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="dendrograma-com-rótulos-dos-indivíduos" class="level3">
-<h3 class="anchored" data-anchor-id="dendrograma-com-rótulos-dos-indivíduos">5. Dendrograma com rótulos dos indivíduos</h3>
+<section id="dendrograma-agrupamento-hierárquico" class="level3">
+<h3 class="anchored" data-anchor-id="dendrograma-agrupamento-hierárquico">5. Dendrograma (agrupamento hierárquico)</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dendrograma (agrupamento hierárquico)</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cluster, <span class="at">labels =</span> nomes, <span class="at">main =</span> <span class="st">"Dendrograma (Jaccard + UPGMA)"</span>, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">sub =</span> <span class="st">""</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="dendrograma-com-rótulos-dos-indivíduos-coloridos" class="level3">
-<h3 class="anchored" data-anchor-id="dendrograma-com-rótulos-dos-indivíduos-coloridos">5.1. Dendrograma com rótulos dos indivíduos coloridos</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(cluster,</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">k =</span> <span class="dv">4</span>,  <span class="co"># Número de grupos (ajuste conforme necessário)</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">k_colors =</span> <span class="fu">c</span>(<span class="st">"#E41A1C"</span>, <span class="st">"#377EB8"</span>, <span class="st">"#4DAF4A"</span>, <span class="st">"#984EA3"</span>),  <span class="co"># Cores para os grupos</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">label_cols =</span> <span class="st">"black"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">rect =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">rect_border =</span> <span class="st">"jco"</span>,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">rect_fill =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Dendrograma (Jaccard + UPGMA)"</span>,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">cex =</span> <span class="fl">0.8</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Registered S3 method overwritten by 'dendextend':
-  method     from 
-  rev.hclust vegan</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostra similaridade entre indivíduos.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>dist_mat <span class="ot">&lt;-</span> <span class="fu">dist</span>(matriz_binaria)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>hc1 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(dist_mat, <span class="at">method =</span> <span class="st">"ward.D2"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hc1, <span class="at">main =</span> <span class="st">"Dendrograma de similaridade RAPD"</span>, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">sub =</span> <span class="st">""</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -227,14 +223,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section>
-<section id="dendrograma-agrupamento-hierárquico" class="level3">
-<h3 class="anchored" data-anchor-id="dendrograma-agrupamento-hierárquico">5.1. Dendrograma (agrupamento hierárquico)</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostra similaridade entre indivíduos.</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dist_mat <span class="ot">&lt;-</span> <span class="fu">dist</span>(matriz_binaria)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>hc <span class="ot">&lt;-</span> <span class="fu">hclust</span>(dist_mat, <span class="at">method =</span> <span class="st">"ward.D2"</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hc, <span class="at">main =</span> <span class="st">"Dendrograma de similaridade RAPD"</span>, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">sub =</span> <span class="st">""</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(hc1,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">cex =</span> <span class="fl">0.8</span>,               <span class="co"># Tamanho da fonte</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">k =</span> <span class="dv">4</span>,                   <span class="co"># Número de grupos (opcional)</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">k_colors =</span> <span class="fu">c</span>(<span class="st">"#E41A1C"</span>, <span class="st">"#377EB8"</span>, <span class="st">"#4DAF4A"</span>, <span class="st">"#984EA3"</span>),  <span class="co"># Cores para os grupos</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">label_cols =</span> <span class="st">"black"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">rect =</span> <span class="cn">TRUE</span>,             <span class="co"># Mostrar retângulos nos grupos</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">rect_fill =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">rect_border =</span> <span class="st">"jco"</span>,     <span class="co"># Cor das bordas</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Dendrograma de similaridade RAPD"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'dendextend':
+  method     from 
+  rev.hclust vegan</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use "none" instead as
+of ggplot2 3.3.4.
+ℹ The deprecated feature was likely used in the factoextra package.
+  Please report the issue at &lt;https://github.com/kassambara/factoextra/issues&gt;.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -244,21 +253,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="análise-de-componentes-principais-pca" class="level3">
-<h3 class="anchored" data-anchor-id="análise-de-componentes-principais-pca">6. Análise de Componentes Principais (PCA)</h3>
+<section id="dendrograma-com-rótulos-dos-indivíduos-coloridos" class="level3">
+<h3 class="anchored" data-anchor-id="dendrograma-com-rótulos-dos-indivíduos-coloridos">5.1. Dendrograma com rótulos dos indivíduos coloridos</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Padronizar a matriz binária (opcional)</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(matriz_binaria, <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotar a PCA com nomes dos indivíduos</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_pca_ind</span>(pca,</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> <span class="st">"none"</span>, <span class="co"># ou "all" para mostrar nomes</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">habillage =</span> <span class="fu">cutree</span>(cluster, <span class="at">k =</span> <span class="dv">3</span>), <span class="co"># colorir por grupo do dendrograma</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">addEllipses =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> <span class="st">"PCA - Dados RAPD"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Too few points to calculate an ellipse</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(cluster,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">k =</span> <span class="dv">4</span>,  <span class="co"># Número de grupos (ajuste conforme necessário)</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">k_colors =</span> <span class="fu">c</span>(<span class="st">"#E41A1C"</span>, <span class="st">"#377EB8"</span>, <span class="st">"#4DAF4A"</span>, <span class="st">"#984EA3"</span>),  <span class="co"># Cores para os grupos</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">label_cols =</span> <span class="st">"black"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">rect =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">rect_border =</span> <span class="st">"jco"</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">rect_fill =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Dendrograma (Jaccard + UPGMA)"</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">cex =</span> <span class="fl">0.8</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -268,13 +274,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="pca-análise-de-componentes-principais" class="level3">
-<h3 class="anchored" data-anchor-id="pca-análise-de-componentes-principais">6.1. PCA (Análise de Componentes Principais)</h3>
+<section id="análise-de-componentes-principais-pca" class="level3">
+<h3 class="anchored" data-anchor-id="análise-de-componentes-principais-pca">6. Análise de Componentes Principais (PCA)</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PCA (Análise de Componentes Principais)</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Para visualizar agrupamentos dos indivíduos.</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(matriz_binaria, <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_pca_ind</span>(pca, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">habillage =</span> dados1<span class="sc">$</span>individuo, <span class="at">palette =</span> <span class="st">"jco"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Padronizar a matriz binária (opcional)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(matriz_binaria, <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotar a PCA com nomes dos indivíduos</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_pca_ind</span>(pca,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> <span class="st">"none"</span>, <span class="co"># ou "all" para mostrar nomes</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">habillage =</span> <span class="fu">cutree</span>(cluster, <span class="at">k =</span> <span class="dv">3</span>), <span class="co"># colorir por grupo do dendrograma</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">addEllipses =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> <span class="st">"PCA - RAPD"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Too few points to calculate an ellipse</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -284,16 +298,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="agrupamento-com-k-means-alternativa-ao-dendrograma" class="level3">
-<h3 class="anchored" data-anchor-id="agrupamento-com-k-means-alternativa-ao-dendrograma">7. Agrupamento com k-means (alternativa ao dendrograma)</h3>
+<section id="pca-análise-de-componentes-principais" class="level3">
+<h3 class="anchored" data-anchor-id="pca-análise-de-componentes-principais">6.1. PCA (Análise de Componentes Principais)</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># Para reprodutibilidade</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>km <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(matriz_binaria, <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar os clusters na PCA</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_cluster</span>(km, <span class="at">data =</span> matriz_binaria,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">labelsize =</span> <span class="dv">10</span>,</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">main =</span> <span class="st">"K-means clustering sobre dados RAPD"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PCA (Análise de Componentes Principais)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Para visualizar agrupamentos dos indivíduos.</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(matriz_binaria, <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_pca_ind</span>(pca, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">habillage =</span> dados1<span class="sc">$</span>individuo, <span class="at">palette =</span> <span class="st">"jco"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -303,17 +314,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+<section id="agrupamento-com-k-means-alternativa-ao-dendrograma" class="level3">
+<h3 class="anchored" data-anchor-id="agrupamento-com-k-means-alternativa-ao-dendrograma">7. Agrupamento com k-means (alternativa ao dendrograma)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># Para reprodutibilidade</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>km <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(matriz_binaria, <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar os clusters na PCA</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_cluster</span>(km, <span class="at">data =</span> matriz_binaria,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">labelsize =</span> <span class="dv">10</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">main =</span> <span class="st">"K-means sobre dados RAPD"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 <section id="salvar-gráficos" class="level3">
 <h3 class="anchored" data-anchor-id="salvar-gráficos">8. Salvar gráficos</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"pca_rapd.png"</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"pca_rapd.png"</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="leitura-dos-dados-ssr" class="level2">
 <h2 class="anchored" data-anchor-id="leitura-dos-dados-ssr">2. Leitura dos dados SSR</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>SSR <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:/Git/EstDocenciaUEM/AULA - PRATICA/SSR.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"SSR"</span>)  <span class="co"># substitua pelo caminho correto se necessário</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>SSR <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:/Git/EstDocenciaUEM/AULA - PRATICA/SSR.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"SSR"</span>)  <span class="co"># substitua pelo caminho correto se necessário</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>New names:
 • `` -&gt; `...1`</code></pre>
@@ -322,7 +352,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="visualização-dos-dados-ssr" class="level3">
 <h3 class="anchored" data-anchor-id="visualização-dos-dados-ssr">2. Visualização dos dados SSR</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(SSR)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(SSR)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 7
   ...1   SSR1  SSR2  SSR3  SSR4  SSR5  SSR6
@@ -336,27 +366,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converter para formato genind (pacote adegenet/poppr)</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Supondo que a primeira coluna é o nome da amostra</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>dados_genind <span class="ot">&lt;-</span> <span class="fu">df2genind</span>(SSR[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">ploidy=</span><span class="dv">2</span>, <span class="at">sep=</span><span class="st">"/"</span>, <span class="at">ind.names=</span>SSR[[<span class="dv">1</span>]])</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converter para formato genind (pacote adegenet/poppr)</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Supondo que a primeira coluna é o nome da amostra</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>dados_genind <span class="ot">&lt;-</span> <span class="fu">df2genind</span>(SSR[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">ploidy=</span><span class="dv">2</span>, <span class="at">sep=</span><span class="st">"/"</span>, <span class="at">ind.names=</span>SSR[[<span class="dv">1</span>]])</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="calcular-matriz-de-distância-nei" class="level3">
 <h3 class="anchored" data-anchor-id="calcular-matriz-de-distância-nei">4. Calcular matriz de distância (Nei)</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distância genética (ex: distância de Nei)</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>dist_matrix <span class="ot">&lt;-</span> <span class="fu">dist</span>(dados_genind, <span class="at">method =</span> <span class="st">"euclidean"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distância genética (ex: distância de Nei)</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>dist_matrix <span class="ot">&lt;-</span> <span class="fu">dist</span>(dados_genind, <span class="at">method =</span> <span class="st">"euclidean"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="dendrograma-com-rótulos-dos-indivíduos-1" class="level3">
-<h3 class="anchored" data-anchor-id="dendrograma-com-rótulos-dos-indivíduos-1">5. Dendrograma com rótulos dos indivíduos</h3>
+<section id="dendrograma-com-rótulos-dos-indivíduos" class="level3">
+<h3 class="anchored" data-anchor-id="dendrograma-com-rótulos-dos-indivíduos">5. Dendrograma com rótulos dos indivíduos</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>hc <span class="ot">&lt;-</span> <span class="fu">hclust</span>(dist_matrix, <span class="at">method =</span> <span class="st">"ward.D2"</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hc, <span class="at">main=</span><span class="st">"Dendrograma de similaridade SSR"</span>, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">sub=</span><span class="st">""</span>, <span class="at">cex=</span><span class="fl">0.8</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>hc2 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(dist_matrix, <span class="at">method =</span> <span class="st">"ward.D2"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hc2, <span class="at">main=</span><span class="st">"Dendrograma de similaridade SSR"</span>, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">sub=</span><span class="st">""</span>, <span class="at">cex=</span><span class="fl">0.8</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(hc2,</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">cex =</span> <span class="fl">0.8</span>,               <span class="co"># Tamanho da fonte</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">k =</span> <span class="dv">4</span>,                   <span class="co"># Número de grupos (opcional)</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">k_colors =</span> <span class="fu">c</span>(<span class="st">"#E41A1C"</span>, <span class="st">"#377EB8"</span>, <span class="st">"#4DAF4A"</span>, <span class="st">"#984EA3"</span>),  <span class="co"># Cores para os grupos</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">label_cols =</span> <span class="st">"black"</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">rect =</span> <span class="cn">TRUE</span>,             <span class="co"># Mostrar retângulos nos grupos</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">rect_fill =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">rect_border =</span> <span class="st">"jco"</span>,     <span class="co"># Cor das bordas</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Dendrograma de similaridade SSR"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
