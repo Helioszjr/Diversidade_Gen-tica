@@ -119,10 +119,13 @@ fviz_dend(cluster,
 ### 6. Análise de Componentes Principais (PCA)
 
 ```{r}
-# Plotagem usando factoextra
 # Padronizar a matriz binária (opcional)
 pca <- prcomp(matriz_binaria, center = TRUE, scale. = TRUE)
+```
 
+
+```{r}
+# Plotagem usando factoextra
 # Plotar a PCA com nomes dos indivíduos
 fviz_pca_ind(pca,
              label = "none", # ou "all" para mostrar nomes
