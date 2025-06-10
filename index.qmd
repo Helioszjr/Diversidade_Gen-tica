@@ -36,14 +36,14 @@ install.packages(c("readxl", "dplyr", "tidyverse","adegenet",
 ## Carregar pacotes
 
 ```{r, message=FALSE}
-library(readxl)
-library(dplyr)
-library(tidyverse)
-library(adegenet)
-library(ape)
-library(vegan)        # Para distância de Jaccard
-library(cluster)      # Para clustering
-library(factoextra)   # Para visualização do dendrograma
+library(readxl)       # Ler arquivos do Excel (.xls, .xlsx)
+library(dplyr)        # Manipulação eficiente de dados (filtrar, selecionar, agrupar, etc)
+library(tidyverse)    # Conjunto de pacotes (inclui dplyr, ggplot2, readr, etc.)
+library(adegenet)     # Análise de dados genéticos (SNPs, microssatélites, AFLPs,RAPD etc.)
+library(ape)          # Análise de filogenias e evolução molecular
+library(vegan)        # Ecologia e estatística multivariada
+library(cluster)      # Métodos de agrupamento (clustering)
+library(factoextra)   # Para visualização de dendrograma, PCA, k-means, clustering hierárquico, etc
 ```
 
 ## 1. Leitura dos dados RAPD
