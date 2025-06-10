@@ -6,6 +6,7 @@ title: |
   Avaliação da diversidade genética em 15 genótipos por meio de marcadores moleculares do tipo SSR (microssatélites) e RAPD
 author: "Adriana Gonela, Helio Junior e Pedro Duhatschek"
 date: "06-06-2025"
+format: pdf
 lang: pt
 toc: true
 code-annotations: "hover"
