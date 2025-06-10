@@ -104,6 +104,7 @@ fviz_dend(hc1,
 ### 5.1. Dendrograma com rótulos dos indivíduos coloridos
 
 ```{r, warning=FALSE}
+# Plotagem usando factoextra
 fviz_dend(cluster,
           k = 4,  # Número de grupos (ajuste conforme necessário)
           k_colors = c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3"),  # Cores para os grupos
@@ -118,6 +119,7 @@ fviz_dend(cluster,
 ### 6. Análise de Componentes Principais (PCA)
 
 ```{r}
+# Plotagem usando factoextra
 # Padronizar a matriz binária (opcional)
 pca <- prcomp(matriz_binaria, center = TRUE, scale. = TRUE)
 
@@ -127,12 +129,12 @@ fviz_pca_ind(pca,
              habillage = cutree(cluster, k = 3), # colorir por grupo do dendrograma
              addEllipses = TRUE,
              title = "PCA - RAPD")
-
 ```
 
 ### 6.1. PCA (Análise de Componentes Principais)
 
 ```{r, warning=FALSE}
+# Plotagem usando factoextra
 # PCA (Análise de Componentes Principais)
 # Para visualizar agrupamentos dos indivíduos.
 pca <- prcomp(matriz_binaria, scale. = TRUE)
@@ -195,6 +197,7 @@ plot(hc2, main="Dendrograma de similaridade SSR", xlab="", sub="", cex=0.8)
 ```
 
 ```{r}
+# Plotagem usando factoextra
 fviz_dend(hc2,
           cex = 0.8,               # Tamanho da fonte
           k = 4,                   # Número de grupos (opcional)
