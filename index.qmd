@@ -4,7 +4,7 @@ title: |
   ![](img/ppg.png){width=60%} 
   
   Avaliação da diversidade genética em 15 acessos por meio de marcadores moleculares do tipo SSR (microssatélites) e RAPD
-author: "Adriana Gonela, Helio Junior e Pedro Duhatschek"
+author: "Adriana Gonela, Helio de souza Junior e Pedro Duhatschek"
 date: "06-09-2025"
 lang: pt
 toc: true
@@ -29,7 +29,8 @@ Elaborado por [Helio de Souza Junior](https://github.com/Helioszjr), com
 
 ```{r, echo=TRUE, eval=FALSE}
 options(repos = c(CRAN = "https://cran.r-project.org"))
-install.packages(c("readxl", "dplyr", "tidyverse","adegenet", "vegan", "cluster", "factoextra", "ape"))
+install.packages(c("readxl", "dplyr", "tidyverse","adegenet", 
+"vegan", "cluster", "factoextra", "ape"))
 ```
 
 ## Carregar pacotes
