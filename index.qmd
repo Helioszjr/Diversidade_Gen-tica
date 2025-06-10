@@ -26,14 +26,14 @@ Elaborado por [Helio de Souza Junior](https://github.com/Helioszjr), com
 [Quarto](https://quarto.org/docs/guide/). Código disponível no
 [GitHub](https://github.com/Helioszjr).
 
-## 1. Instalar pacotes
+## Instalar pacotes
 
 ```{r, echo=TRUE, eval=FALSE}
 options(repos = c(CRAN = "https://cran.r-project.org"))
 install.packages(c("readxl", "dplyr", "tidyverse","adegenet", "vegan", "cluster", "factoextra", "ape"))
 ```
 
-## 2. Carregar pacotes
+## Carregar pacotes
 
 ```{r, message=FALSE}
 library(readxl)
